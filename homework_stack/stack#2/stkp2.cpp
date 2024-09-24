@@ -25,6 +25,8 @@ public:
 		assert(!isFull());
 		array[++top] = x;
 	}
+
+	// problem two
 	void insert_at_bottom(int x)
 	{
 		// assert(!isFull());
@@ -49,6 +51,7 @@ public:
 		// need to arrive the end of the stack
 		// add the value at the end
 	}
+	// problem three
 	void reverse()
 	{
 		if (isEmpty())
@@ -62,7 +65,6 @@ public:
 			insert_at_bottom(cur);
 		}
 	}
-
 	int pop()
 	{
 		assert(!isEmpty());
@@ -84,12 +86,13 @@ public:
 	{
 		return top == -1;
 	}
-void display_reversed() {
+	void display_reversed()
+	{
 		for (int i = 0; i <= top; i++)
 			cout << array[i] << " ";
 		cout << "\n";
 	}
-	
+
 	void display()
 	{
 		for (int i = top; i >= 0; i--)
@@ -97,6 +100,7 @@ void display_reversed() {
 		cout << "\n";
 	}
 };
+// problem one
 void asteroidCollision(int arr[], int len)
 {
 	Stack s(len);
@@ -125,12 +129,39 @@ void asteroidCollision(int arr[], int len)
 	}
 	s.display_reversed();
 }
+//problem four
+void next_greater_num(int v[], int len)
+{
+	Stack s1(len);
+	for (size_t i = 0; i < len; i++)
+	{
+		while (!s1.isEmpty() && v[i] > v[s1.peek()])
+		{
+			v[s1.pop()] = v[i];
+		}
+		s1.push(i);
+	}
+	while (!s1.isEmpty())
+	{
+		v[s1.pop()] = -1;
+	}
+	for (size_t i = 0; i < len; i++)
+	{
+		cout << v[i] << " ";
+	}
+	cout << endl;
+}
 int main()
 {
-int arr[] ={1, 0, -1,1};
+	int arr[] = {1, 0, -1, 1};
 	asteroidCollision(arr, 4);
-	
-
+ 
+	const int LEN1 = 8;
+	int v1[LEN1]{73, 74, 75, 71, 69, 72, 76, 73};
+	next_greater_num(v1, LEN1);
+	const int LEN2 = 13;
+	int v2[LEN2]{20, 10, 7, 8, 9, 15, 14, 13, 12, 13, 14, 15, 16};
+	next_greater_num(v2, LEN2);
 
 	return 0;
 }
