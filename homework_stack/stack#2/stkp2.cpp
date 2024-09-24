@@ -153,9 +153,28 @@ void next_greater_num(int v[], int len)
 }
 int main()
 {
+	// test one
 	int arr[] = {1, 0, -1, 1};
 	asteroidCollision(arr, 4);
- 
+	// test two
+	Stack stk(10);
+	stk.push(1);
+	stk.push(2);
+	stk.push(3);
+	stk.display();	// 3 2 1
+	cout << "efter insert buttm\n";
+	stk.insert_at_bottom(7);
+	stk.display();	// 3 2 1 7
+	// test three
+	Stack stk2(10);
+	stk2.push(1);
+	stk2.push(2);
+	stk2.push(3);
+	stk2.display();	// 3 2 1
+	cout << "after reverse\n";
+	stk2.reverse();
+	stk2.display();	// 1 2 3
+ 	// test four
 	const int LEN1 = 8;
 	int v1[LEN1]{73, 74, 75, 71, 69, 72, 76, 73};
 	next_greater_num(v1, LEN1);
